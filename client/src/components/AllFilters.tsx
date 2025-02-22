@@ -7,7 +7,7 @@ import MultipleSelectCheckmarks from './Filter';
 import { AarohFilter } from '../App';
 import Button from '@mui/material/Button';
 import { useQuery } from '@apollo/client';
-import { GET_INSTRUMENTS, GET_LANGUAGES, GET_RAAGS, GET_STYLES } from './dataTableHelper';
+import { GET_INSTRUMENTS, GET_LANGUAGES, GET_RAAGS, GET_STYLES } from './queries';
 
 type filterProps = {
   filter: AarohFilter

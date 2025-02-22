@@ -9,10 +9,11 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useQuery } from '@apollo/client';
 import { AarohFilter } from '../App';
-import { GET_ALL_SETS } from './dataTableHelper';
+import { GET_ALL_SETS } from './queries';
+import ShowDetails from './ShowDetails';
 
 // Define the type for the response data
-interface Show {
+export interface Show {
   key: string;
   setLead: string[];
   date: string;
@@ -43,7 +44,7 @@ const columns: readonly Column[] = [
   { id: 'instrumentation', label: 'Instrumentation', minWidth: 100 },
   { id: 'languages', label: 'Languages', minWidth: 100 },
   { id: 'raag', label: 'Raag', minWidth: 100 },
-  { id: 'mostRecentPerformance', label: 'mostRecentPerformance', minWidth: 100 },
+  { id: 'mostRecentPerformance', label: 'Most Recent Performance', minWidth: 100 },
 ];
 
 interface Data {
@@ -54,9 +55,10 @@ export default function StickyHeadTable(props: {filters: AarohFilter}) {
   const styleFilters = props.filters.styleFilters.length > 0 ? props.filters.styleFilters : null
   const raagFilters = props.filters.raagFilters.length > 0 ? props.filters.raagFilters : null
   const languageFilters = props.filters.languageFilters.length > 0 ? props.filters.languageFilters : null
+  const instrumentFilters = props.filters.instrumentFilters.length > 0 ? props.filters.instrumentFilters : null
 
   const { loading, error, data } = useQuery(GET_ALL_SETS, {
-    variables: {raagFilters: raagFilters, styleFilters: styleFilters, languageFilters: languageFilters},
+    variables: {raagFilters: raagFilters, styleFilters: styleFilters, languageFilters: languageFilters, instrumentFilters: instrumentFilters},
   });
 
   console.log('Data from query:', data);
@@ -90,7 +92,7 @@ export default function StickyHeadTable(props: {filters: AarohFilter}) {
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                 >
-                  {column.label}
+                  <b>{column.label}</b>
                 </TableCell>
               ))}
             </TableRow>
@@ -102,7 +104,12 @@ export default function StickyHeadTable(props: {filters: AarohFilter}) {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.setName}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      let value = row[column.id];
+                      if (column.id === 'mostRecentPerformance') {
+                        return (<TableCell key={column.id} align={column.align}>
+                          <ShowDetails show={value as Show}></ShowDetails>
+                        </TableCell>)
+                      } 
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {value.toString()}

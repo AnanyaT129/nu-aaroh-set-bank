@@ -2,8 +2,8 @@ import { gql } from "@apollo/client";
 
 // Define the GraphQL query
 export const GET_ALL_SETS = gql`
-  query GetAllSets($raagFilters: [String], $styleFilters: [String], $languageFilters: [String]) {
-    getAllSets(raag: $raagFilters, musicStyles: $styleFilters, languages: $languageFilters) {
+  query GetAllSets($raagFilters: [String], $styleFilters: [String], $languageFilters: [String], $instrumentFilters: [String]) {
+    getAllSets(raag: $raagFilters, musicStyles: $styleFilters, languages: $languageFilters, instrumentation: $instrumentFilters) {
       setName
       songs
       musicStyles
