@@ -1,0 +1,29 @@
+{
+  "setName": "sample set",
+  "songs": [
+    "song 1",
+    "song 2"
+  ],
+  "musicStyles": [
+    "style 1",
+    "style 2"
+  ],
+  "instrumentation": [
+    "instrument 1",
+    "instrument 2"
+  ],
+  "languages": [
+    "language 1"
+  ],
+  "raag": [
+    "raag 1"
+  ],
+  "mostRecentPerformance": {
+    "key": "key 1",
+    "setLead": [
+      "set lead 1"
+    ],
+    "date": "date 1",
+    "name": "name 1"
+  }
+}

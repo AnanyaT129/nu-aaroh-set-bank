@@ -1,0 +1,30 @@
+{
+  "setName": "O re piya x Maula Mere",
+  "songs": [
+    "O Re Piya",
+    "Maula Mere Maula",
+    "Mein Agar Kahoon"
+  ],
+  "musicStyles": [
+    "Classical"
+  ],
+  "instrumentation": [
+    "Keys",
+    "Flute",
+    "Kanjira",
+    "Harmonium",
+    "Vocals"
+  ],
+  "languages": [
+    "Hindi"
+  ],
+  "raag": [],
+  "mostRecentPerformance": {
+    "key": "C#",
+    "setLead": [
+      "Varshini"
+    ],
+    "date": "Feb 7, 2025",
+    "name": "Dilwale"
+  }
+}
